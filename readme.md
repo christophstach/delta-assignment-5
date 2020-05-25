@@ -4,8 +4,8 @@ To add momentum we add the following lines of code to the **NNBPL_Complete_Cycle
 ```matlab
 for i = 1:3
 	dw(i + 6) = Eta * Delta(3) * o(i + 3);
-    dw(i + 6) = dw(i + 6) + gamma * dw(i + 6); % Momentum
-    w(i + 6) = w(i + 6) + dw(i + 6); %New
+	dw(i + 6) = dw(i + 6) + gamma * dw(i + 6); % Momentum
+	w(i + 6) = w(i + 6) + dw(i + 6); %New
 end
 ```
 
