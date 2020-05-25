@@ -13,15 +13,15 @@ and:
 
 ```matlab
 for i = 1:3
-    dw(i) = Eta * Delta(1) * o(i);
-    dw(i) = dw(i) + gamma * dw(i);
-    w(i) = w(i) + dw(i);
+	dw(i) = Eta * Delta(1) * o(i);
+	dw(i) = dw(i) + gamma * dw(i);
+	w(i) = w(i) + dw(i);
 end
 
 for i = 4:6
-    dw(i) = Eta * Delta(2) * o(i - 3);
-    dw(i) = dw(i) + gamma * dw(i);
-    w(i) = w(i) + dw(i);
+	dw(i) = Eta * Delta(2) * o(i - 3);
+	dw(i) = dw(i) + gamma * dw(i);
+	w(i) = w(i) + dw(i);
 end    
 ```
 
