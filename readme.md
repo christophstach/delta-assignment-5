@@ -91,8 +91,8 @@ No results yet
 
 # Results
 
- * Task 1: I was able to implement the momentum. I also was able to implement the forward path for an additional layer in the neural network. I was struggling implementing the $\delta$ Error-Signal for the earlier layer. So I couldn't calculate the backward pass need for Subtask 2, 3 and 4.
- * Task 2: I was able to completely do the assignment. The plots with graphs needed are in the plot folder.
+ * Task 1: I finished the completly task. I implemented momentum and added a layer to the NN. I also did experiments with different configurations of the NN.
+ * Task 2: I finished the completly task. The plots with graphs needed are in the plot folder.
  * Task 3: I didn't understand how to train the Classifier without any data. I seems like we should generate the needed data our self. But had no idea how to do that for the given situation
 
 
