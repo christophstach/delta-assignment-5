@@ -3,9 +3,9 @@ To add momentum we add the following lines of code to the **NNBPL_Complete_Cycle
 
 ```matlab
 for i = 1:3
-	dw(i + 6) = Eta * Delta(3) * o(i + 3);
-	dw(i + 6) = dw(i + 6) + gamma * dw(i + 6); % Momentum
-	w(i + 6) = w(i + 6) + dw(i + 6); %New
+	%                                          Momentum	
+	dw(i + 6) = Eta * Delta(3) * o(i + 3) + gamma * dw(i + 6);
+	w(i + 6) = w(i + 6) + dw(i + 6);
 end
 ```
 
@@ -13,29 +13,32 @@ and:
 
 ```matlab
 for i = 1:3
-	dw(i) = Eta * Delta(1) * o(i);
-	dw(i) = dw(i) + gamma * dw(i);
+	%                                  Momentum
+	dw(i) = Eta * Delta(1) * o(i) + gamma * dw(i)
 	w(i) = w(i) + dw(i);
 end
 
 for i = 4:6
-	dw(i) = Eta * Delta(2) * o(i - 3);
-	dw(i) = dw(i) + gamma * dw(i);
+	%                                      Momentum
+	dw(i) = Eta * Delta(2) * o(i - 3) + gamma * dw(i);
 	w(i) = w(i) + dw(i);
 end    
 ```
 
-The following table shows the number of epochs needed to reach the desired error of 0.01 with different momentum term ($\gamma$) configurations: 
+We also add a second hidden layer to the neural network. See code in (NNBPL_Complete_Cycle.mlx)[https://github.com/christophstach/delta-assignment-5/blob/master/NNBPL_Complete_Cycle.mlx].
 
-| Momentum term ($\gamma$) | Number of Epochs needed |
-| ------------------------ | ----------------------- |
-| 0                        | 2363                    |
-| 0.8                      | 1320                    |
-| 0.85                     | 1285                    |
-| 0.9                      | 1251                    |
-| 0.95                     | 1220                    |
+Afterwards we tested the performance of the neural network  with different configurations. We test different $\gamma$ values with the original neural network provided and the version which has an additional hidden layer. The following table shows the results of the experiments:
 
-As we can see, using $\gamma$ greatly increases the performance of the neural network training algorithm. Using a momentum term it needs less epochs to finish the training.
+| Momentum term ($\gamma$) | Hidden Layers | Number of Epochs needed |
+| ------------------------ | ------------- | ----------------------- |
+| 0                        | 1             | 2363                    |
+| 0.9                      | 1             | 242                     |
+| 0.95                     | 1             | 133                     |
+| 0                        | 2             | 13077                   |
+| 0.90                     | 2             | 1411                    |
+| 0.95                     | 2             | 987                     |
+
+As we can see, using $\gamma$ greatly increases the performance of the neural network training algorithm with both configurations of hidden layer. Using momentum helps to find the desired maximum error in less number of epochs. Adding an additional layer doesn't help to increase the performance of the network. The reason for that is that a deeper neural network is harder to calculate and optimize than a shallow neural network. The gradients in the earlier layer vanish faster. In our use case the problem can be easily solved by a shallow neural network. Other use cases thought could be more complex, so that the shallow neural network is not able to model the problem. In this case adding more layer is beneficial to get a higher accuracy even if we sacrifice training and inference speed.
 
 ## 2 Function Approximation
 
